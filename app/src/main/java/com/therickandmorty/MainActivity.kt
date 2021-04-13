@@ -3,10 +3,9 @@ package com.therickandmorty
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.therickandmorty.ui.CharactersFragment
+import com.therickandmorty.ui.characters.CharactersFragment
 import com.therickandmorty.ui.EpisodesFragment
 import com.therickandmorty.ui.LocationsFragment
 import com.therickandmorty.ui.SearchFragment

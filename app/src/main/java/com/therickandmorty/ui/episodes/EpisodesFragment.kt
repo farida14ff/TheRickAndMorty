@@ -1,4 +1,4 @@
-package com.therickandmorty.ui
+package com.therickandmorty.ui.episodes
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
