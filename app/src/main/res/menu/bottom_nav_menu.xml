@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_characters"
+        android:icon="@drawable/ic_characters"
+        android:title="@string/title_characters" />
+
+    <item
+        android:id="@+id/navigation_locations"
+        android:enabled="true"
+        android:icon="@drawable/ic_locations"
+        android:title="@string/title_locations" />
+
+    <item
+        android:id="@+id/navigation_episodes"
+        android:enabled="true"
+        android:icon="@drawable/ic_episodes"
+        android:title="@string/title_episodes" />
+
+    <item
+        android:id="@+id/navigation_search"
+        android:enabled="true"
+        android:icon="@drawable/ic_search"
+        android:title="@string/title_search" />
+
+
+</menu>
