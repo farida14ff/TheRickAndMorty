@@ -24,9 +24,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        fragmentManager.beginTransaction()
-            .add(android.R.id.content,charactersFragment)
         nav_view.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+
+        if (savedInstanceState == null) {
+            fragmentManager.beginTransaction()
+                .add(android.R.id.content, charactersFragment, "1")
+                .commit()
+        }
+
+
     }
 
     private val onNavigationItemSelectedListener =
