@@ -6,9 +6,9 @@ import android.view.MenuItem
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.therickandmorty.ui.characters.CharactersFragment
-import com.therickandmorty.ui.EpisodesFragment
-import com.therickandmorty.ui.LocationsFragment
-import com.therickandmorty.ui.SearchFragment
+import com.therickandmorty.ui.episodes.EpisodesFragment
+import com.therickandmorty.ui.locations.LocationsFragment
+import com.therickandmorty.ui.search.SearchFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

@@ -1,24 +1,19 @@
 package com.therickandmorty.data.remote
 
 import com.google.gson.GsonBuilder
-import com.therickandmorty.data.model.Character
+import com.therickandmorty.data.model.CharactersList
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
+import retrofit2.http.GET
 import java.util.concurrent.TimeUnit
 
 interface TheRickAndMortyClient {
 
-
-    suspend fun getCharactersList(
-
-    ): Character
-
     companion object {
-        private const val baseUtl = "https://rickandmortyapi.com/api"
-        private const val apiKey = "0e946bb26a1704942485f34c3c154260"
+        private const val baseUtl = "https://rickandmortyapi.com/api/"
 
         private fun getGson() = GsonBuilder().setLenient().create()
 
@@ -39,4 +34,9 @@ interface TheRickAndMortyClient {
 
         operator fun invoke() = getRetrofit().create(TheRickAndMortyClient::class.java)
     }
+
+    @GET("character")
+    suspend fun getCharactersList(): CharactersList
+
+
 }
