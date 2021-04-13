@@ -3,6 +3,7 @@ package com.therickandmorty
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.appcompat.app.ActionBar
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.therickandmorty.ui.characters.CharactersFragment
@@ -19,13 +20,19 @@ class MainActivity : AppCompatActivity() {
     private val episodesFragment: EpisodesFragment = EpisodesFragment()
     private val searchFragment: SearchFragment = SearchFragment()
 
+    lateinit var toolbar: ActionBar
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        toolbar = supportActionBar!!
+
         nav_view.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
 
         if (savedInstanceState == null) {
+            toolbar.title = "Character"
             fragmentManager.beginTransaction()
                 .add(android.R.id.content, charactersFragment, "1")
                 .commit()
@@ -38,6 +45,7 @@ class MainActivity : AppCompatActivity() {
         BottomNavigationView.OnNavigationItemSelectedListener { item: MenuItem ->
             when (item.itemId) {
                 R.id.navigation_characters -> {
+                    toolbar.title = "Character"
                     fragmentManager.beginTransaction()
                         .replace(android.R.id.content, charactersFragment)
                         .addToBackStack(null)
@@ -45,6 +53,7 @@ class MainActivity : AppCompatActivity() {
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_locations -> {
+                    toolbar.title = "Location"
                     fragmentManager.beginTransaction()
                         .replace(android.R.id.content, locationsFragment,"2")
                         .addToBackStack(null)
@@ -52,6 +61,7 @@ class MainActivity : AppCompatActivity() {
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_episodes -> {
+                    toolbar.title = "Episodes"
                     fragmentManager.beginTransaction()
                         .replace(android.R.id.content, episodesFragment, "3")
                         .addToBackStack(null)
@@ -59,6 +69,7 @@ class MainActivity : AppCompatActivity() {
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_search -> {
+                    toolbar.title = "Search"
                     fragmentManager.beginTransaction()
                         .replace(android.R.id.content, searchFragment, "4")
                         .addToBackStack(null)
