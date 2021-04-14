@@ -40,11 +40,24 @@ interface TheRickAndMortyClient {
     @GET("character")
     suspend fun getCharactersList(): CharactersList
 
+    @GET("character/?name=rick")
+    suspend fun filterCharactersListByName(): CharactersList
+
+    @GET("character/?status=alive")
+    suspend fun filterCharactersListByStatus(): CharactersList
+
+    @GET("character/?name=rick&status=alive")
+    suspend fun filterCharactersListByNameAndStatus(): CharactersList
+
+
+
     @GET("episode")
     suspend fun getEpisodesList(): EpisodesList
 
     @GET("location")
     suspend fun getLocationsList(): LocationsList
+
+
 
 
 }

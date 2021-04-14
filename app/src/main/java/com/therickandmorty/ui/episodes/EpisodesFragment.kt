@@ -14,7 +14,9 @@ import com.therickandmorty.base.InjectorObject
 import com.therickandmorty.data.model.Episode
 import com.therickandmorty.helper.OnItemClickListener
 import com.therickandmorty.ui.adapters.EpisodesAdapter
+import kotlinx.android.synthetic.main.fragment_characters.*
 import kotlinx.android.synthetic.main.fragment_episodes.*
+import kotlinx.android.synthetic.main.fragment_episodes.progress_bar
 
 
 class EpisodesFragment : Fragment() {
@@ -39,6 +41,8 @@ class EpisodesFragment : Fragment() {
         episodesViewModel.episode.observe(viewLifecycleOwner) {
             when (it) {
                 is ApiResult.Success ->{
+                    progress_bar.visibility = View.GONE
+                    recycler_character.visibility = View.VISIBLE
                     initList(it.data.episodes)
                 }
                 is ApiResult.Error -> {
@@ -47,9 +51,9 @@ class EpisodesFragment : Fragment() {
 
                 }
                 is ApiResult.Loading -> {
-                    Log.e("Episodes hendel", "Loading")
-                    "Loading..."
-                } //Todo progressbar
+                    progress_bar.visibility = View.VISIBLE
+                    recycler_character.visibility = View.GONE
+                }
             }
 
 

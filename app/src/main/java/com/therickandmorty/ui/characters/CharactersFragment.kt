@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.therickandmorty.R
@@ -39,14 +40,18 @@ class CharactersFragment : Fragment() {
         charactersViewModel.character.observe(viewLifecycleOwner) {
             when (it) {
                 is ApiResult.Success -> {
-                    Log.e("Character Success", it.toString())
+                    progress_bar.visibility = View.GONE
+                    recycler_character.visibility = View.VISIBLE
                     initList(it.data.characters)
                 }
                 is ApiResult.Error -> {
                     it.throwable.message.toString()
                     Log.e("Character Error", it.throwable.message.toString())
                 }
-                is ApiResult.Loading -> "Loading..." //Todo progressbar
+                is ApiResult.Loading -> {
+                    progress_bar.visibility = View.VISIBLE
+                    recycler_character.visibility = View.GONE
+                }
             }
 
 
@@ -64,12 +69,11 @@ class CharactersFragment : Fragment() {
 
         })
 
-
         val layoutManager = LinearLayoutManager(activity)
         recycler_character.layoutManager = layoutManager
         charactersAdapter.notifyDataSetChanged()
         recycler_character.adapter = charactersAdapter
 
-
     }
+
 }
