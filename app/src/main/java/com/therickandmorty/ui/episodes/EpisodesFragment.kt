@@ -42,7 +42,7 @@ class EpisodesFragment : Fragment() {
             when (it) {
                 is ApiResult.Success ->{
                     progress_bar.visibility = View.GONE
-                    recycler_character.visibility = View.VISIBLE
+                    recycler_episode.visibility = View.VISIBLE
                     initList(it.data.episodes)
                 }
                 is ApiResult.Error -> {
@@ -52,7 +52,7 @@ class EpisodesFragment : Fragment() {
                 }
                 is ApiResult.Loading -> {
                     progress_bar.visibility = View.VISIBLE
-                    recycler_character.visibility = View.GONE
+                    recycler_episode.visibility = View.GONE
                 }
             }
 

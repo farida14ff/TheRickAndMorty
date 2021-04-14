@@ -15,7 +15,6 @@ import com.therickandmorty.base.InjectorObject
 import com.therickandmorty.data.model.LocationResult
 import com.therickandmorty.helper.OnItemClickListener
 import com.therickandmorty.ui.adapters.LocationAdapter
-import kotlinx.android.synthetic.main.fragment_characters.*
 import kotlinx.android.synthetic.main.fragment_locations.*
 import kotlinx.android.synthetic.main.fragment_locations.progress_bar
 
@@ -45,7 +44,7 @@ class LocationsFragment : Fragment() {
             when (it) {
                 is ApiResult.Success -> {
                     progress_bar.visibility = View.GONE
-                    recycler_character.visibility = View.VISIBLE
+                    recycler_location.visibility = View.VISIBLE
                     initList(it.data.locationResults)
                 }
                 is ApiResult.Error -> {
@@ -54,7 +53,7 @@ class LocationsFragment : Fragment() {
                 }
                 is ApiResult.Loading -> {
                     progress_bar.visibility = View.VISIBLE
-                    recycler_character.visibility = View.GONE
+                    recycler_location.visibility = View.GONE
                 }
             }
         }
