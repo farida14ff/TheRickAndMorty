@@ -10,7 +10,7 @@ class CharactersViewModel(
     private val charactersRepository: CharactersRepository
 ):ViewModel() {
 
-    val character = liveData<ApiResult<CharactersList>> {
+    val character = liveData{
         emit(ApiResult.Loading)
         val result = charactersRepository.getCharactersList()
         emit(result)

@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.therickandmorty.R
 import com.therickandmorty.base.ApiResult
@@ -20,11 +19,10 @@ import kotlinx.android.synthetic.main.fragment_characters.*
 class CharactersFragment : Fragment() {
 
     private val charactersViewModel: CharactersViewModel by viewModels {
-        InjectorObject.getMainViewModelFactory()
+        InjectorObject.getCharacterViewModelFactory()
     }
 
     private lateinit var charactersAdapter: CharactersAdapter
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,10 +37,9 @@ class CharactersFragment : Fragment() {
 
         charactersViewModel.character.observe(viewLifecycleOwner) {
             when (it) {
-//                is ApiResult.Success -> getString(R.string.int_c, it.data.main.temp.toInt())
                 is ApiResult.Success -> initList(it.data.results)
                 is ApiResult.Error -> it.throwable.message.toString()
-                is ApiResult.Loading -> "Loading..."
+                is ApiResult.Loading -> "Loading..." //Todo progressbar
             }
 
 

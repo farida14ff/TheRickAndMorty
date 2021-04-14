@@ -5,13 +5,19 @@ package com.therickandmorty.base
 import com.therickandmorty.data.remote.TheRickAndMortyClient
 import com.therickandmorty.data.repository.CharactersRepository
 import com.therickandmorty.data.repository.CharactersRepositoryImpl
+import com.therickandmorty.data.repository.EpisodesRepository
+import com.therickandmorty.data.repository.EpisodesRepositoryImpl
 import com.therickandmorty.ui.characters.CharactersViewModelFactory
+import com.therickandmorty.ui.episodes.EpisodesViewModelFactory
 
 object InjectorObject {
 
-    val theRickAndMortyClient = TheRickAndMortyClient()
+    private val theRickAndMortyClient = TheRickAndMortyClient()
 
-    val whetherRepository: CharactersRepository = CharactersRepositoryImpl(theRickAndMortyClient)
+    private val charactersRepository: CharactersRepository = CharactersRepositoryImpl(theRickAndMortyClient)
+    fun getCharacterViewModelFactory() = CharactersViewModelFactory(charactersRepository)
 
-    fun getMainViewModelFactory() = CharactersViewModelFactory(whetherRepository)
+    private val episodesRepository: EpisodesRepository = EpisodesRepositoryImpl(theRickAndMortyClient)
+    fun getEpisodeViewModelFactory() = EpisodesViewModelFactory(episodesRepository)
+
 }

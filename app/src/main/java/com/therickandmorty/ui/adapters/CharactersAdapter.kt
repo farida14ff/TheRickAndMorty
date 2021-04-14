@@ -51,7 +51,6 @@ class CharactersAdapter(
 
     override fun onBindViewHolder(holder: CharactersViewHolder, position: Int) {
         holder.onBind(items!![position], onItemClickListener)
-//        holder.onBind(position)
     }
 
     override fun getItemCount(): Int {
