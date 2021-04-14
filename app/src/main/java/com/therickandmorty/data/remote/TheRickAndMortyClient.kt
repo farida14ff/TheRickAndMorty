@@ -3,6 +3,7 @@ package com.therickandmorty.data.remote
 import com.google.gson.GsonBuilder
 import com.therickandmorty.data.model.CharactersList
 import com.therickandmorty.data.model.EpisodesList
+import com.therickandmorty.data.model.LocationsList
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -41,6 +42,9 @@ interface TheRickAndMortyClient {
 
     @GET("episode")
     suspend fun getEpisodesList(): EpisodesList
+
+    @GET("location")
+    suspend fun getLocationsList(): LocationsList
 
 
 }

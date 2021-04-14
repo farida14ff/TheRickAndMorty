@@ -2,7 +2,7 @@ package com.therickandmorty.data.model
 
 data class Episode(
     val air_date: String,
-    val characters: List<Character>,
+    val characters: List<String>,
     val created: String,
     val episode: String,
     val id: Int,

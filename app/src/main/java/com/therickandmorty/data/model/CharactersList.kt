@@ -1,7 +1,9 @@
 package com.therickandmorty.data.model
 
+import com.google.gson.annotations.SerializedName
 
 data class CharactersList(
     val info: Info,
-    val results: List<Character>
+    @SerializedName("results")
+    val characters: List<Character>
 )

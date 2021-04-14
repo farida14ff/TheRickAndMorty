@@ -4,16 +4,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.therickandmorty.data.repository.CharactersRepository
 
-class CharactersViewModelFactory (
+class CharactersViewModelFactory(
     private val charactersRepository: CharactersRepository
-    ) : ViewModelProvider.Factory {
+) : ViewModelProvider.Factory {
 
-        @Suppress("UNCHECKED_CAST")
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            return when {
-                modelClass.isAssignableFrom(CharactersViewModel::class.java) ->
-                    CharactersViewModel(charactersRepository) as T
-                else -> throw IllegalArgumentException("Not found")
-            }
+    @Suppress("UNCHECKED_CAST")
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        return when {
+            modelClass.isAssignableFrom(CharactersViewModel::class.java) ->
+                CharactersViewModel(charactersRepository) as T
+            else -> throw IllegalArgumentException("Not found")
         }
     }
+}

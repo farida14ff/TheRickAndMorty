@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.therickandmorty.R
-import com.therickandmorty.data.model.Character
 import com.therickandmorty.helper.OnItemClickListener
 import kotlinx.android.synthetic.main.item_character.view.*
+import com.therickandmorty.data.model.Character
 
 class CharactersAdapter(
     private val items: List<Character>?,

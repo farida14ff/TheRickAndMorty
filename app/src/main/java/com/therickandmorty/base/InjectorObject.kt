@@ -3,12 +3,10 @@ package com.therickandmorty.base
 
 
 import com.therickandmorty.data.remote.TheRickAndMortyClient
-import com.therickandmorty.data.repository.CharactersRepository
-import com.therickandmorty.data.repository.CharactersRepositoryImpl
-import com.therickandmorty.data.repository.EpisodesRepository
-import com.therickandmorty.data.repository.EpisodesRepositoryImpl
+import com.therickandmorty.data.repository.*
 import com.therickandmorty.ui.characters.CharactersViewModelFactory
 import com.therickandmorty.ui.episodes.EpisodesViewModelFactory
+import com.therickandmorty.ui.locations.LocationViewModelFactory
 
 object InjectorObject {
 
@@ -19,5 +17,8 @@ object InjectorObject {
 
     private val episodesRepository: EpisodesRepository = EpisodesRepositoryImpl(theRickAndMortyClient)
     fun getEpisodeViewModelFactory() = EpisodesViewModelFactory(episodesRepository)
+
+    private val locationRepository: LocationRepository = LocationRepositoryImpl(theRickAndMortyClient)
+    fun getLocationViewHolderFactory() = LocationViewModelFactory(locationRepository)
 
 }

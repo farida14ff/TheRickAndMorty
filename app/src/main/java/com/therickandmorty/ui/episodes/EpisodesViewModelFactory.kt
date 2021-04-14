@@ -6,7 +6,7 @@ import com.therickandmorty.data.repository.EpisodesRepository
 
 class EpisodesViewModelFactory(
     private val episodesRepository: EpisodesRepository
-): ViewModelProvider.Factory {
+) : ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {

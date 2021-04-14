@@ -2,8 +2,8 @@ package com.therickandmorty.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class EpisodesList(
-    val info: InfoX,
+data class LocationsList(
+    val info: InfoXX,
     @SerializedName("results")
-    val episodes: List<Episode>
+    val locationResults: List<LocationResult>
 )

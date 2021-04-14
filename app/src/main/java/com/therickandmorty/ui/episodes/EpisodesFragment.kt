@@ -1,6 +1,7 @@
 package com.therickandmorty.ui.episodes
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -37,9 +38,18 @@ class EpisodesFragment : Fragment() {
 
         episodesViewModel.episode.observe(viewLifecycleOwner) {
             when (it) {
-                is ApiResult.Success -> initList(it.data.results)
-                is ApiResult.Error -> it.throwable.message.toString()
-                is ApiResult.Loading -> "Loading..." //Todo progressbar
+                is ApiResult.Success ->{
+                    initList(it.data.episodes)
+                }
+                is ApiResult.Error -> {
+                    it.throwable.message.toString()
+                    Log.e("Episodes Error", it.throwable.message.toString())
+
+                }
+                is ApiResult.Loading -> {
+                    Log.e("Episodes hendel", "Loading")
+                    "Loading..."
+                } //Todo progressbar
             }
 
 
@@ -48,6 +58,8 @@ class EpisodesFragment : Fragment() {
     }
 
     private fun initList(episodesList:List<Episode>) {
+        Log.e("Episodes hendel", "in list initer")
+
 
         episodesAdapter = EpisodesAdapter(episodesList, object :
             OnItemClickListener {

@@ -1,6 +1,7 @@
 package com.therickandmorty.ui.characters
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,10 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.therickandmorty.R
 import com.therickandmorty.base.ApiResult
 import com.therickandmorty.base.InjectorObject
-import com.therickandmorty.data.model.Character
 import com.therickandmorty.helper.OnItemClickListener
 import com.therickandmorty.ui.adapters.CharactersAdapter
 import kotlinx.android.synthetic.main.fragment_characters.*
+import com.therickandmorty.data.model.Character
 
 
 class CharactersFragment : Fragment() {
@@ -37,8 +38,14 @@ class CharactersFragment : Fragment() {
 
         charactersViewModel.character.observe(viewLifecycleOwner) {
             when (it) {
-                is ApiResult.Success -> initList(it.data.results)
-                is ApiResult.Error -> it.throwable.message.toString()
+                is ApiResult.Success -> {
+                    Log.e("Character Success", it.toString())
+                    initList(it.data.characters)
+                }
+                is ApiResult.Error -> {
+                    it.throwable.message.toString()
+                    Log.e("Character Error", it.throwable.message.toString())
+                }
                 is ApiResult.Loading -> "Loading..." //Todo progressbar
             }
 
@@ -47,7 +54,7 @@ class CharactersFragment : Fragment() {
 
     }
 
-    private fun initList(charactersList:List<Character>) {
+    private fun initList(charactersList: List<Character>) {
 
         charactersAdapter = CharactersAdapter(charactersList, object :
             OnItemClickListener {
@@ -57,10 +64,12 @@ class CharactersFragment : Fragment() {
 
         })
 
+
         val layoutManager = LinearLayoutManager(activity)
         recycler_character.layoutManager = layoutManager
         charactersAdapter.notifyDataSetChanged()
         recycler_character.adapter = charactersAdapter
+
 
     }
 }
